@@ -1,0 +1,7 @@
+.manage_options {
+	float: right;
+}
+.manage_options div {
+	cursor: pointer;
+	margin-bottom: 10px;
+}
