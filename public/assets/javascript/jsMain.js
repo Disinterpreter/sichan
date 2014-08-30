@@ -137,7 +137,7 @@ $(function() {
 	});
 
 	$(".quote-post").click(function(e) {
-		$(".add_post > form textarea").val('>> '+ $(this).parents('.post').find('.post_id > span').text());
+		$(".add_post > form textarea").val('>> '+ $(this).parents('.post, .thread_main_content').find('.post_id > span').text());
 		$(".add_post > button").click();
 	});
 

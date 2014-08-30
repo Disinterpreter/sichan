@@ -32,6 +32,7 @@ a:active, a:focus {
 #wrapper {
     padding: 0 40px 0 40px;
     height: 100%;
+    min-width: 800px;
 }
 .thread {
     padding-bottom: 20px;
@@ -252,6 +253,7 @@ a:active, a:focus {
 .content-main {
     margin-left: 100px;
     margin-right: 20px;
+    padding-bottom: 15px;
 }
 .tabs {
     text-align: center;
@@ -474,7 +476,7 @@ input[type="submit"]:hover {
     background-color: #eee;
     height: 100%;
     width: 100%;
-    margin-bottom: 15px;
+    margin-top: 15px;
 }
 .main-list > .section_name, .main-list-half > .section_name {
     background-color: #536270;
@@ -505,7 +507,7 @@ input[type="submit"]:hover {
     background-color: #e74c3c;
 }
 .latest-threads {
-    padding-left: 30px !important;
+    padding-left: 40px !important;
 }
 .latest-threads > ul {
     list-style-type: decimal !important;
@@ -606,4 +608,18 @@ input[type="submit"]:hover {
 .captcha-wrapper {
     float: left;
     width: 75%;
+}
+
+.editor-mark {
+    display: inline !important;
+    background-color: #536270;
+    margin-right: 10px;
+    padding: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+.marks-wrapper {
+    background-color: #536270;
+    padding: 5px;
+    border-radius: 10px;
 }

@@ -177,7 +177,7 @@ class BoardController extends BaseController {
 			'/\%\%(.*?)\%\%/' 								=> '<span class="spoiler">$1</span>',
 			'/\*\*(.*?)\*\*/' 								=> '<b>$1</b>',
 			'/\*(.*?)\*/'									=> '<i>$1</i>',
-			'/(?<!>)\>\s?([^>\n]+)/'						=> '<span class="quote">$1</span>',
+			//'/(?<!>)\>\s?([^>\n]+)/'						=> '<span class="quote">$1</span>',
 			'/((https?:\/\/|(www\.))((.*)\.([^\s|\<]*)))/'	=> '<a href="//$4" target="_blank">$1</a>',
 			'/(\>\>\s?([0-9]*))/'							=> '<a href="#" class="answer">$1</a>',
 			'/\&(.*?)\&/'									=> '<strike>$1</strike>'

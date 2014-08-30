@@ -11,6 +11,15 @@
 	@endsection
 @endif
 
+@section('head')
+	<script type="text/javascript" src="{{ URL::asset('assets/javascript/jEditor.js') }}"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("textarea[name=textarea]").editor();
+		});
+	</script>
+@endsection
+
 @section('content')
 	<!-- CURRENT THREAD -->
 	<div class="thread">
@@ -40,10 +49,13 @@
 	                <div class="text">                                
 	            		{{ $content->text }}
 	            	</div>
-	            </div>
+	            </div>            
 	        </div>
 	         <!-- CLEARFIX -->
 	        <div style="clear: both;"></div>
+	        <div class="quote-post" style="margin: 10px 0 0 0; font-size: 12px;">
+	            <img src='{{ URL::asset("/assets/images/quote.png") }}' alt="quote" /> Ответить
+	        </div>
 	    </div>    
 	    <div class="posts_body">
 	    	@foreach($posts as $key => $val)        
@@ -107,22 +119,4 @@
 	    	</form>
 	    </div>               
 	</div>
-	<!--<script type="text/javascript">
-		$(function() {
-			function getContent() {
-				var $timestamp = $(".timestamp").last(),
-					currentTimestamp = '0000-00-00 00:00:00';
-
-				if($timestamp.length) {
-					currentTimestamp = $timestamp.text();
-				}
-
-				$.post('/get_posts', 'thread='+ $("#thread_id > a").text().replace('#', '') +'&timestamp='+ currentTimestamp, function() {
-					getContent();
-				});
-			}
-
-			getContent();
-		});
-	</script>-->
 @endsection
