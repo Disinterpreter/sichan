@@ -392,7 +392,7 @@ input[type="submit"] {
     width: 100%;
     border-bottom: 4px solid #4c5762;
 }
-input[type="submit"]:hover {
+input[type="submit"]:not(#search-button):hover {
     background-color: #ED5153;
     border-bottom: 4px solid #e14043;
 }
@@ -537,6 +537,7 @@ input[type="submit"]:hover {
 }
 .post_answers {
     padding: 15px 0 0 15px;
+    display: inline-block;
 }
 .thread_main_content > .post_answers {
     font-size: 12px;
@@ -592,7 +593,7 @@ input[type="submit"]:hover {
     line-height: 16px;
     margin: 15px 0px 0px 12px;
     cursor: pointer;
-    display: inline-block;
+    display: block;
 }
 .quote-post > img {
     vertical-align: top;
@@ -612,14 +613,38 @@ input[type="submit"]:hover {
 
 .editor-mark {
     display: inline !important;
-    background-color: #536270;
     margin-right: 10px;
     padding: 5px;
-    color: #fff;
+    color: #000;
     font-weight: bold;
 }
 .marks-wrapper {
-    background-color: #536270;
+    background-color: #fff;
     padding: 5px;
     border-radius: 10px;
+    margin-bottom: 10px;
+}
+.posts-chain {
+	position: fixed;
+	z-index: 1;
+	top: 25%;
+	left: 35%;
+	background-color: #fff;
+	border-radius: 15px;
+	padding: 15px;
+	max-height: 400px;
+	max-width: 600px;
+	overflow-y: auto;
+	word-break: break-all;
+}
+.chain-block {
+	margin: 15px 0;
+}
+.show_answers {
+	background: url(../images/eye.png) no-repeat;
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	vertical-align: -3px;
+	cursor: pointer;
 }

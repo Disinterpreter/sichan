@@ -29,9 +29,18 @@ $(function() {
 	});
 
 	$(document).click(function(e) {
-		if(!$(e.target).closest($(".sidebar-expanded, .left-sidebar")).length 
-			&& $("#overlap").length) {
-			$iExpand.click();
+		if($("#overlap").length) {
+			var $chain = $(".posts-chain");
+			if($chain.length) {
+				if(!$(e.target).closest($chain).length)
+					$chain.remove();
+				else
+					return;
+			}
+
+			if(!$(e.target).closest($(".sidebar-expanded, .left-sidebar")).length) {
+				$iExpand.click();
+			}
 		}
 	});
 
@@ -93,7 +102,8 @@ $(function() {
 							Ответы: <a href="'+ post_number +'">\
 								>> '+ self.parents('.post').find('.post_id > span').text() +'\
 							</a>\
-						</div>'));
+						</div>\
+						<div class="show_answers"></div>'));
 					}
 					else {
 						$answers.append('<a href="'+ post_number +'">\
@@ -273,4 +283,44 @@ $(function() {
 			});
 		}
 	});
+
+	/* Генерация цепочек ответов */
+	$(".show_answers").mouseover(function() {
+		var showPosts = searchPosts(
+			parseInt($(this).parents('.post, .thread_main_content').find('.post_id').text().replace(/[^0-9]+/, ''))
+		);
+
+		var $chain = '<div class="posts-chain"></div>';
+
+		$("body").append('<div id="overlap"></div>')
+			.append($chain);
+
+		$(showPosts).each(function(i, val) {
+			$('<div class="chain-block">'+
+				$(val).html()
+			+'</div>').appendTo('.posts-chain');
+		});
+
+		$(".chain-block").find('.post_answers, .quote-post, .show_answers, .manage_options').remove();
+	});
+
+	function searchPosts(postID) {
+	    var postArray = [];
+	    $(".post").each(function(i, val) {
+	    	var $answer = $(val).find('.answer');
+	    	for(var i = 0; i < $answer.length; i++) {
+		    	var currentAnswer = $answer.eq(i).text().replace(/[^0-9]+/, '');
+		        if(currentAnswer == postID)
+		            postArray.push($(val));
+		        else {
+		            for(var b = 0; b < postArray.length; b++) {
+		                if(parseInt(postArray[b].find('.post_id').text().replace(/[^0-9]+/, '')) == currentAnswer) {
+		                    postArray.push($(val));
+		                }
+		            }
+		        }
+		    }
+	    });
+	    return postArray;
+	}	
 });

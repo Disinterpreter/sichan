@@ -3,12 +3,12 @@
 $(function() {
 	$.fn.editor = function(params) {
 		var params = $.extend({
-
+			insertBefore: null
 		}, params);
 
 		var self = this;
 
-		Editor.init(this);
+		Editor.init(this, params);
 
 		$(".editor-mark").click(function(e) {
 			e.preventDefault();
@@ -33,10 +33,17 @@ $(function() {
 	}
 
 	var Editor = {
-		init: function(area) {
+		init: function(area, params) {
 			var objects = Editor.get();
 
-			area.before($('<div class="marks-wrapper"></div>'));
+			if(!params.insertBefore)
+				area.before($('<div class="marks-wrapper"></div>'));
+
+			else {
+				if(params.insertBefore.length) {
+					params.insertBefore.before($('<div class="marks-wrapper"></div>'));
+				}
+			}
 
 			for(var i in objects) {
 				$('<a href="#" class="editor-mark">'+ objects[i]['mark'] +'</a>').appendTo(".marks-wrapper");

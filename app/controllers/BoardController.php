@@ -53,7 +53,11 @@ class BoardController extends BaseController {
 	}
 
 	public function addPost() {
-		Input::merge(array_map('trim', Input::all()));
+		Input::merge(array_map(function($content) {
+			$content = trim($content);
+			$content = html_entity_decode($content);
+			return $content;
+		}, Input::all()));
 
 		$data = Input::all();
 		
@@ -100,7 +104,11 @@ class BoardController extends BaseController {
 	}
 
 	public function addThread() {
-		Input::merge(array_map('trim', Input::all()));
+		Input::merge(array_map(function($content) {
+			$content = trim($content);
+			$content = html_entity_decode($content);
+			return $content;
+		}, Input::all()));
 
 		$data = Input::all();
 

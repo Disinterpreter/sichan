@@ -4,12 +4,20 @@
 	sichan :: /{{ $title->board }}/ — {{ $title->title }}
 @endsection
 
-@if(Session::has('manage.username'))
-	@section('head')
+@section('head')
+	<script type="text/javascript" src="{{ URL::asset('assets/javascript/jEditor.js') }}"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("textarea[name=textarea]").editor({
+				insertBefore: $(".big-form > form")
+			});
+		});
+	</script>
+	@if(Session::has('manage.username'))
 		<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/manage.css') }}" />
 		<script type="text/javascript" src="{{ URL::asset('assets/javascript/manage.js') }}"></script>
-	@endsection
-@endif
+	@endif	
+@endsection
 
 @section('content')
 	<!-- CREATE THREAD -->

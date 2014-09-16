@@ -4,13 +4,6 @@
 	sichan :: /{{ $content->board }}/ :: {{ $content->title }}
 @endsection
 
-@if(Session::has('manage.username'))
-	@section('head')
-		<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/manage.css') }}" />
-		<script type="text/javascript" src="{{ URL::asset('assets/javascript/manage.js') }}"></script>
-	@endsection
-@endif
-
 @section('head')
 	<script type="text/javascript" src="{{ URL::asset('assets/javascript/jEditor.js') }}"></script>
 	<script type="text/javascript">
@@ -18,6 +11,10 @@
 			$("textarea[name=textarea]").editor();
 		});
 	</script>
+	@if(Session::has('manage.username'))
+		<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/manage.css') }}" />
+		<script type="text/javascript" src="{{ URL::asset('assets/javascript/manage.js') }}"></script>
+	@endif	
 @endsection
 
 @section('content')

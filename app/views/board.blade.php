@@ -55,7 +55,7 @@
                         <form class="search_wrapper">
                             <input type="text" placeholder="Поиск..." />
                             <div class="input-wrapper">
-                                <input type="submit" value="" />
+                                <input type="submit" value="" id="search-button" />
                             </div>    
                         </form>
                     </div>
